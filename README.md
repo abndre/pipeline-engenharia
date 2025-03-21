@@ -29,3 +29,14 @@ atualize a connection do airflow: aws_default, adicione no extra
   "endpoint_url": "http://minio:9000"
 }
 ```
+
+## Local Stack
+
+Com o aws cli instalado
+
+```
+export AWS_ACCESS_KEY_ID="test"
+export AWS_SECRET_ACCESS_KEY="test"
+export AWS_DEFAULT_REGION="us-east-1"
+aws --endpoint-url=http://localhost:4566 s3 ls
+```
