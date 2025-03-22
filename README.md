@@ -38,5 +38,12 @@ Com o aws cli instalado
 export AWS_ACCESS_KEY_ID="test"
 export AWS_SECRET_ACCESS_KEY="test"
 export AWS_DEFAULT_REGION="us-east-1"
+
 aws --endpoint-url=http://localhost:4566 s3 ls
+
+#sqs
+aws --endpoint-url=http://localhost:4566 sqs create-queue --queue-name sqs-dev-andre
+
+aws --endpoint-url=http://localhost:4566 sqs send-message --queue-url http://localhost:4566/000000000000/sqs-dev-andre --message-body '{"hello":"world"}'
+
 ```
