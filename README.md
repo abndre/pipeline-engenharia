@@ -20,7 +20,9 @@ admin:password
 
 ## Airflow Con
 
-atualize a connection do airflow: aws_default, adicione no extra
+atualize as connection do airflow: 
+
+### aws_default - >adicione no extra
 
 ```
 {
@@ -29,7 +31,21 @@ atualize a connection do airflow: aws_default, adicione no extra
   "endpoint_url": "http://minio:9000"
 }
 ```
-
+### spark_default - >adicione no extra
+```
+{
+  "master": "local[*]"
+}
+```
+### aws_local-stack - >adicione no extra
+```
+{
+  "aws_access_key_id": "test",
+  "aws_secret_access_key": "test",
+  "endpoint_url": "http://localstack:4566",
+  "aws_default_region": "us-east-1"
+}
+```
 ## Local Stack
 
 Com o aws cli instalado
