@@ -12,8 +12,10 @@ RUN apt-get update && \
 
 
 # Copiar o Spark para dentro da imagem
-COPY spark-3.5.5-bin-hadoop3 /opt/spark
-
+#COPY spark-3.5.5-bin-hadoop3 /opt/spark
+RUN curl -fsSL https://dlcdn.apache.org/spark/spark-3.5.5/spark-3.5.5-bin-hadoop3.tgz \
+    | tar -xz -C /opt/ \
+    && mv /opt/spark-3.5.5-bin-hadoop3 /opt/spark
 # Definir variáveis de ambiente do Spark
 ENV SPARK_HOME=/opt/spark
 ENV PATH="$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH"

@@ -22,7 +22,7 @@ dag = DAG(
 # Comando para rodar o Spark
 spark_command = """
 spark-submit --master local[*] \
-    /opt/spark/examples/src/main/python/pi.py 10
+    /opt/airflow/spark_scripts/pi.py 10
 """
 
 # Task que executa o Spark

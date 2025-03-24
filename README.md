@@ -3,17 +3,8 @@
 
 Initialize the project
 
-Primeiramente faça download deste pacote spark
 
-https://dlcdn.apache.org/spark/spark-3.5.5/spark-3.5.5-bin-hadoop3.tgz
-
-descompacte manualmente no path deste folder na pasta 
-
-```
-spark-3.5.5-bin-hadoop3
-```
-
-Depois execute
+Execute
 
 ```
 docker compose build .
