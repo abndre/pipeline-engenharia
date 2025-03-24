@@ -45,7 +45,7 @@ def process_message(**kwargs):
 default_args = {
     'owner': 'airflow',
     'start_date': datetime(2024, 3, 21),
-    'retries': 1
+    'retries': 0
 }
 
 dag = DAG(

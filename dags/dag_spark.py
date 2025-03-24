@@ -7,7 +7,7 @@ default_args = {
     "owner": "airflow",
     "depends_on_past": False,
     "start_date": datetime(2024, 3, 21),
-    "retries": 1,
+    "retries": 0,
 }
 
 # Criando a DAG

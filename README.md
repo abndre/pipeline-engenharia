@@ -42,6 +42,7 @@ atualize as connection do airflow:
 }
 ```
 ### spark_default - >adicione no extra
+Host: local[*]
 ```
 {
   "master": "local[*]"
