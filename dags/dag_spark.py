@@ -20,17 +20,31 @@ dag = DAG(
 )
 
 # Comando para rodar o Spark
+spark_command_pi = """
+spark-submit --master local[*] \
+    /opt/airflow/spark_scripts/pi.py
+"""
+
+# Comando para rodar o Spark
 spark_command = """
 spark-submit --master local[*] \
-    /opt/airflow/spark_scripts/pi.py 10
+    /opt/airflow/spark_scripts/demo_iceberg_spark.py
 """
 
 # Task que executa o Spark
 run_spark_pi = BashOperator(
     task_id="run_spark_pi",
+    bash_command=spark_command_pi,
+    dag=dag,
+)
+
+
+# Task que executa o Spark
+run_spark_iceberg = BashOperator(
+    task_id="run_spark",
     bash_command=spark_command,
     dag=dag,
 )
 
 # Definir a ordem das tarefas
-run_spark_pi
+run_spark_pi >> run_spark_iceberg

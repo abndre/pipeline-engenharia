@@ -24,6 +24,9 @@ x-airflow-common:
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
+    OPENLINEAGE_URL: http://localhost:5000  # ou o endereço do Marquez
+    OPENLINEAGE_NAMESPACE: meu_projeto_airflow
+    OPENLINEAGE_DISABLE_SSL: true
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
   volumes:
     - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
@@ -75,7 +78,7 @@ services:
     <<: *airflow-common
     command: webserver
     ports:
-      - "8080:8080"
+      - "8087:8080"
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
       interval: 30s
@@ -191,13 +194,15 @@ services:
       - rest
       - minio
     volumes:
-      - warehouse:/home/iceberg/warehouse
+      - ./warehouse:/home/iceberg/warehouse
+      - ./notebooks:/home/iceberg/notebooks/notebooks
     environment:
       - AWS_ACCESS_KEY_ID=admin
       - AWS_SECRET_ACCESS_KEY=password
       - AWS_REGION=us-east-1
     ports:
       - 8888:8888
+      - 8080:8080
       - 10000:10000
       - 10001:10001
 
@@ -224,7 +229,9 @@ services:
       - MINIO_ROOT_PASSWORD=password
       - MINIO_DOMAIN=minio
     networks:
-      - airflow_iceberg_net
+      airflow_iceberg_net:
+          aliases:
+            - warehouse.minio
     ports:
       - 9001:9001
       - 9000:9000

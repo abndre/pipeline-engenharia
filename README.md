@@ -20,6 +20,9 @@ Access the airflow webpage:
 
 http://localhost:8080/
 
+usuario e senha da webpage: 
+
+
 airflow:airflow
 
 Access the minins3 webpage
@@ -73,4 +76,12 @@ aws --endpoint-url=http://localhost:4566 sqs create-queue --queue-name sqs-dev-a
 
 aws --endpoint-url=http://localhost:4566 sqs send-message --queue-url http://localhost:4566/000000000000/sqs-dev-andre --message-body '{"hello":"world"}'
 
+```
+
+# notebook
+
+com o iceberg é possivel acessar notebook, no terminal digite:
+
+```
+docker exec -it spark-iceberg pyspark
 ```
