@@ -8,6 +8,9 @@ Execute
 
 ```
 docker compose build .
+docker compose run airflow-cli airflow config list
+
+docker compose up airflow-init
 ```
 
 Por fim inicie o projeto:
