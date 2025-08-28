@@ -15,7 +15,7 @@ dag = DAG(
     "spark_pi_example",
     default_args=default_args,
     description="Executa o exemplo Spark Pi",
-    schedule_interval=None,  # Executa manualmente
+    schedule=None,  # Executa manualmente
     catchup=False,
 )
 

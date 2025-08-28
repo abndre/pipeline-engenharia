@@ -51,7 +51,7 @@ default_args = {
 dag = DAG(
     dag_id='sqs_localstack_dag',
     default_args=default_args,
-    schedule_interval=None,  # Executa manualmente ou via trigger
+    schedule=None,  # Executa manualmente ou via trigger
     catchup=False
 )
 

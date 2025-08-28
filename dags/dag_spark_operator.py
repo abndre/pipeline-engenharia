@@ -1,5 +1,7 @@
 from airflow import DAG
-from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+#from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
+
 from datetime import datetime
 
 # Argumentos padrão da DAG
@@ -15,7 +17,7 @@ dag = DAG(
     "dag_spark_operator",
     default_args=default_args,
     description="Executa o exemplo Spark Pi",
-    schedule_interval=None,  # Executa manualmente
+    schedule=None,  # Executa manualmente
     catchup=False,
 )
 
@@ -23,8 +25,8 @@ dag = DAG(
 run_spark_pi = SparkSubmitOperator(
     task_id="run_spark_pi",
     conn_id="spark_default",  # O Airflow usa esse ID de conexão para a configuração do Spark
-    #application="/opt/spark/examples/src/main/python/pi.py",  # Caminho do exemplo do Spark
-    application="/opt/airflow/spark_scripts/pi.py",  # Caminho do exemplo do Spark
+    application="/opt/spark/examples/src/main/python/pi.py",  # Caminho do exemplo do Spark
+    #application="/opt/airflow/spark_scripts/pi.py",  # Caminho do exemplo do Spark
     total_executor_cores=4,  # Número de núcleos para os executores
     executor_memory="1G",  # Memória para cada executor
     driver_memory="1G",  # Memória para o driver
