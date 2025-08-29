@@ -20,7 +20,7 @@ def process_message(**kwargs):
 with DAG(
     dag_id="sqs_sensor_example",
     start_date=datetime(2024, 3, 22),
-    schedule_interval=None,
+    schedule=None,
     catchup=False,
 ) as dag:
 
@@ -36,8 +36,7 @@ with DAG(
 
     process_task = PythonOperator(
         task_id="process_message",
-        python_callable=process_message,
-        provide_context=True
+        python_callable=process_message
     )
 
     wait_for_sqs_message >> process_task
