@@ -1,0 +1,38 @@
+aws_default:
+  conn_type: aws
+  description: null
+  extra: "{\n  \"aws_access_key_id\": \"admin\",\n  \"aws_secret_access_key\": \"password\",\n
+    \ \"endpoint_url\": \"http://minio:9000\"\n}"
+  host: null
+  login: null
+  password: null
+  port: null
+  schema: null
+aws_local-stack:
+  conn_type: aws
+  description: null
+  extra: "{\n  \"aws_access_key_id\": \"test\",\n  \"aws_secret_access_key\": \"test\",\n
+    \ \"endpoint_url\": \"http://localstack:4566\",\n  \"aws_default_region\": \"us-east-1\"\n}"
+  host: null
+  login: null
+  password: null
+  port: null
+  schema: null
+spark_default:
+  conn_type: spark
+  description: null
+  extra: "{\n  \"master\": \"local[*]\"\n}"
+  host: local[*]
+  login: null
+  password: null
+  port: null
+  schema: null
+spark_teste:
+  conn_type: spark
+  description: null
+  extra: "{\n  \"master\": \"local[*]\"\n}"
+  host: local[*]
+  login: null
+  password: null
+  port: null
+  schema: null
